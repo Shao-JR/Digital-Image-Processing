@@ -35,7 +35,9 @@ plot_hist(img_gray)
 # Please fill, use opencv to realize histogram equalization
 # then show the histogram and image after histogram equalization.
 # Hint: use cv2.equalizeHist()
-...
+img_eq = cv2.equalizeHist(img_gray)
+plot_hist(img_eq)
+cv2_imshow(img_eq)
 #########################################
 
 
@@ -52,7 +54,7 @@ H, W = img_gray.shape
 for i in range(H):
   for j in range(W):
     pixel_value = img_gray[i, j]
-    pr_hist[int(pixel_value)] = ...  # add 1 to the corresponding intensity level
+    pr_hist[int(pixel_value)] = pr_hist[int(pixel_value)] + 1  # add 1 to the corresponding intensity level
 
 pr_hist /= H * W  # normalize to 0~1
 
@@ -63,7 +65,7 @@ s_img = np.zeros_like(img_gray)  # the transformed image s.
 
 # transform each pixel value in input image, and the transformed values are stored in the s_img.
 for k in range(L):
-  eq_hist[k] = ...  # calculate s for each intensity level (r)
+  eq_hist[k] = eq_hist[k-1] + pr_hist[k]  # calculate s for each intensity level (r)
 # normalize to 0~L-1
 eq_hist_min, eq_hist_max = eq_hist.min(), eq_hist.max()
 for k in range(L):
@@ -71,7 +73,7 @@ for k in range(L):
 for i in range(H):
   for j in range(W):
     pixel_value = img_gray[i, j]
-    s_img[i, j] = ...  # transform pixel_value (r) to s according to the eq_hist
+    s_img[i, j] = eq_hist[int(pixel_value)]  # transform pixel_value (r) to s according to the eq_hist
 
 plot_hist(s_img)
 cv2_imshow(s_img)
