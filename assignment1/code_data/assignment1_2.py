@@ -5,7 +5,7 @@
 import cv2
 import numpy as np
 import time
-from google.colab.patches import cv2_imshow
+# from google.colab.patches import cv2_imshow
 
 def resize(src, new_size):
     dst_w, dst_h = new_size  # width and height of the target image
@@ -33,9 +33,9 @@ def resize(src, new_size):
             Please refer to Page 108 of the slide Topic 2: Intensity Transformation. 
             Complete the code of bilinear interpolation
             """
-            f_x_y1 = (src_x_2 - src_x)/(src_x_2 - src_x_1) *          ...                   + (src_x - src_x_1)/(src_x_2 - src_x_1) *           ...
-            f_x_y2 =              ...                      * src[src_y_2, src_x_1]          +                 ...                   * src[src_y_2, src_x_2]
-            dst[dst_y, dst_x] = int((src_y_2 - src_y)/(src_y_2 - src_y_1) *        ...      + (src_y - src_y_1)/(src_y_2 - src_y_1) *        ...          )
+            f_x_y1 = (src_x_2 - src_x)/(src_x_2 - src_x_1) * src[src_y_1, src_x_1]          + (src_x - src_x_1)/(src_x_2 - src_x_1) * src[src_y_1, src_x_2]
+            f_x_y2 = (src_x_2 - src_x)/(src_x_2 - src_x_1) * src[src_y_2, src_x_1]          + (src_x - src_x_1)/(src_x_2 - src_x_1) * src[src_y_2, src_x_2]
+            dst[dst_y, dst_x] = int((src_y_2 - src_y)/(src_y_2 - src_y_1) * f_x_y1 + (src_y - src_y_1)/(src_y_2 - src_y_1) * f_x_y2 )
             ###########################################################
 
     return dst
@@ -43,5 +43,5 @@ def resize(src, new_size):
 
 img_in = cv2.imread('test2.jpg', 0)
 img_out = resize(img_in, (200, 200))
-cv2_imshow(img_out)
+# cv2_imshow(img_out)
 cv2.imwrite('test2_resized.jpg', img_out)
