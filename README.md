@@ -1,6 +1,13 @@
 # Image Processing Algorithms Learning Kit
 ### 数字图像处理算法实践集合
 
+<p>
+  <img src="https://img.shields.io/badge/Python-3.8+-blue.svg" alt="Python Version">
+  <img src="https://img.shields.io/badge/OpenCV-Latest-green.svg" alt="OpenCV">
+  <img src="https://img.shields.io/badge/NumPy-Core-orange.svg" alt="NumPy">
+  <img src="https://img.shields.io/badge/Matplotlib-Plotting-red.svg" alt="Matplotlib">
+</p>
+
 本项目是一个综合性的数字图像处理教学演示仓库，旨在通过Python和OpenCV实现课程中的核心算法概念。项目涵盖了从空域滤波、频域变换到图像压缩的完整流程，适合作为学习数字图像处理（Digital Image Processing）的实践参考。
 
 ## 📖 项目简介
